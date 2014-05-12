@@ -11,17 +11,18 @@
  */
 
 / {
-	aliases {
+	/*aliases {
 		mxcfb0 = &mxcfb1;
 		mxcfb1 = &mxcfb2;
 		mxcfb2 = &mxcfb3;
 		mxcfb3 = &mxcfb4;
-	};
+	};*/
 
 	memory {
 		reg = <0x10000000 0x40000000>;
 	};
 
+#if 0
 	battery: max8903@0 {
 		compatible = "fsl,max8903-charger";
 		pinctrl-names = "default";
@@ -34,6 +35,7 @@
 		fsl,usb_valid;
 		status = "okay";
 	};
+#endif
 
 	hannstar_cabc {
 		compatible = "hannstar,cabc";
@@ -103,6 +105,7 @@
 		};
 	};
 
+	#if 0
 	gpio-keys {
 		compatible = "gpio-keys";
 		power {
@@ -124,8 +127,9 @@
 			linux,code = <114>; /* KEY_VOLUMEDOWN */
 		};
 	};
+	#endif
 
-	sound {
+	/*sound {
 		compatible = "fsl,imx6q-sabresd-wm8962",
 			   "fsl,imx-audio-wm8962";
 		model = "wm8962-audio";
@@ -151,9 +155,9 @@
 			     "fsl,imx-audio-hdmi";
 		model = "imx-audio-hdmi";
 		hdmi-controller = <&hdmi_audio>;
-	};
+	};*/
 
-	mxcfb1: fb@0 {
+	/*mxcfb1: fb@0 {
 		compatible = "fsl,mxc_sdc_fb";
 		disp_dev = "ldb";
 		interface_pix_fmt = "RGB666";
@@ -195,9 +199,9 @@
 		int_clk = <0>;
 		late_init = <0>;
 		status = "disabled";
-	};
+	};*/
 
-	lcd@0 {
+	/*lcd@0 {
 		compatible = "fsl,lcd";
 		ipu_id = <0>;
 		disp_id = <0>;
@@ -212,7 +216,7 @@
 		pwms = <&pwm1 0 5000000>;
 		brightness-levels = <0 4 8 16 32 64 128 255>;
 		default-brightness-level = <7>;
-	};
+	};*/
 
 	v4l2_cap_0 {
 		compatible = "fsl,imx6q-v4l2-capture";
@@ -249,13 +253,15 @@
 	status = "okay";
 };
 
+#if 0
 &cpu0 {
 	arm-supply = <&sw1a_reg>;
 	soc-supply = <&sw1c_reg>;
 	pu-supply = <&pu_dummy>; /* use pu_dummy if VDDSOC share with VDDPU */
 };
+#endif
 
-&ecspi1 {
+/*&ecspi1 {
 	fsl,spi-num-chipselects = <1>;
 	cs-gpios = <&gpio4 9 0>;
 	pinctrl-names = "default";
@@ -269,7 +275,7 @@
 		spi-max-frequency = <20000000>;
 		reg = <0>;
 	};
-};
+};*/
 
 &fec {
 	pinctrl-names = "default";
@@ -278,6 +284,7 @@
 	status = "okay";
 };
 
+#if 0
 &gpc {
 	fsl,cpu_pupscr_sw2iso = <0xf>;
 	fsl,cpu_pupscr_sw = <0xf>;
@@ -287,12 +294,15 @@
 	fsl,wdog-reset = <2>; /* watchdog select of reset source */
 	pu-supply = <&pu_dummy>; /* ldo-bypass:use pu_dummy if VDDSOC share with VDDPU */
 };
+#endif
 
+#if 0
 &gpu {
 	pu-supply = <&pu_dummy>; /* ldo-bypass:use pu_dummy if VDDSOC share with VDDPU */
 };
+#endif
 
-&hdmi_audio {
+/*&hdmi_audio {
 	status = "okay";
 };
 
@@ -312,8 +322,9 @@
 	fsl,phy_reg_vlev = <0x0294>;
 	fsl,phy_reg_cksymtx = <0x800d>;
 	status = "okay";
-};
+};*/
 
+#if 0
 &i2c1 {
 	clock-frequency = <100000>;
 	pinctrl-names = "default";
@@ -369,7 +380,9 @@
 		vddio-supply = <&reg_sensor>;
 	};
 };
+#endif
 
+#if 0
 &i2c2 {
 	clock-frequency = <100000>;
 	pinctrl-names = "default";
@@ -512,7 +525,9 @@
                 wakeup-gpios = <&gpio6 8 0>;
         };
 };
+#endif
 
+#if 0
 &i2c3 {
         clock-frequency = <100000>;
         pinctrl-names = "default";
@@ -557,6 +572,7 @@
 		interrupts = <9 2>;
 	};
 };
+#endif
 
 &iomuxc {
 	pinctrl-names = "default";
@@ -600,7 +616,7 @@
 	};
 };
 
-&ldb {
+/*&ldb {
 	ipu_id = <1>;
 	disp_id = <1>;
 	ext_ref = <1>;
@@ -608,42 +624,42 @@
 	sec_ipu_id = <1>;
 	sec_disp_id = <0>;
 	status = "okay";
-};
+};*/
 
-&mipi_csi {
+/*&mipi_csi {
 	status = "okay";
 	ipu_id = <0>;
 	csi_id = <1>;
 	v_channel = <0>;
 	lanes = <2>;
-};
+};*/
 
-&mipi_dsi {
+/*&mipi_dsi {
 	dev_id = <0>;
 	disp_id = <1>;
 	lcd_panel = "TRULY-WVGA";
 	disp-power-on-supply = <&reg_mipi_dsi_pwr_on>;
 	resets = <&mipi_dsi_reset>;
 	status = "okay";
-};
+};*/
 
-&pcie {
+/*&pcie {
 	power-on-gpio = <&gpio3 19 0>;
 	reset-gpio = <&gpio7 12 0>;
 	status = "okay";
-};
+};*/
 
 
-&pwm1 {
+/*&pwm1 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_pwm1_1>;
 	status = "okay";
-};
+};*/
 
-&ssi2 {
+/*&ssi2 {
 	fsl,mode = "i2s-slave";
 	status = "okay";
-};
+};*/
 
 &uart1 {
 	pinctrl-names = "default";
@@ -686,7 +702,7 @@
 	status = "okay";
 };
 
-&usdhc4 {
+/*&usdhc4 {
         pinctrl-names = "default";
         pinctrl-0 = <&pinctrl_usdhc4_1>;
         bus-width = <8>;
@@ -694,8 +710,10 @@
         no-1-8-v;
 	keep-power-in-suspend;
         status = "okay";
-};
+};*/
 
+#if 0
 &vpu {
 	pu-supply = <&pu_dummy>; /* ldo-bypass:use pu_dummy if VDDSOC share with VDDPU */
 };
+#endif

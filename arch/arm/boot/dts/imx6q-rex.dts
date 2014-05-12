@@ -20,13 +20,13 @@
 	compatible = "fsl,imx6q-rex", "fsl,imx6q";
 };
 
-&battery {
+/*&battery {
 	offset-charger = <1900>;
 	offset-discharger = <1694>;
 	offset-usb-charger = <1685>;
-};
+};*/
 
-&mxcfb1 {
+/*&mxcfb1 {
 	status = "okay";
 };
 
@@ -40,8 +40,8 @@
 
 &mxcfb4 {
 	status = "okay";
-};
+};*/
 
-&sata {
+/*&sata {
 	status = "okay";
-};
+};*/
