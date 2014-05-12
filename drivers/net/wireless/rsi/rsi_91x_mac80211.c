@@ -729,7 +729,7 @@ static int rsi_mac80211_set_rate_mask(struct ieee80211_hw *hw,
 
 	if (mask->control[IEEE80211_BAND_2GHZ].legacy == 0xfff) {
 		common->fixedrate_mask[IEEE80211_BAND_2GHZ] =
-			(mask->control[IEEE80211_BAND_2GHZ].ht_mcs[0] << 12);
+			(mask->control[IEEE80211_BAND_2GHZ].mcs[0] << 12);
 	} else {
 		common->fixedrate_mask[IEEE80211_BAND_2GHZ] =
 			mask->control[IEEE80211_BAND_2GHZ].legacy;
